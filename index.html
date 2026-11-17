@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Interactive teaching laboratory for buck, boost, buck-boost and single-phase inverter converters.">
+<title>Power Electronics Conversion for Renewable Energy</title>
+<style>
+:root{--bg:#f3f6fc;--panel:#fff;--panel2:#f5f8ff;--ink:#132241;--muted:#5d6c87;--line:#dbe4f2;--navy:#001871;--cyan:#009cbe;--cyan-soft:#e4f8fd;--indigo:#4f63c9;--orange:#ed922d;--green:#138d78;--shadow:0 9px 34px rgba(7,30,83,.07);--grid:#e9eef7;--button-ink:#fff;--tooltip:#f1f6ff}
+html[data-theme="dark"]{--bg:#081326;--panel:#101f38;--panel2:#172b49;--ink:#eff5ff;--muted:#a9bad2;--line:#2b4261;--navy:#8cadff;--cyan:#4bd4e7;--cyan-soft:#103a4a;--indigo:#b1aeff;--orange:#ffc074;--green:#68d9b7;--shadow:0 12px 38px rgba(0,0,0,.24);--grid:#293d57;--button-ink:#06162b;--tooltip:#152d4a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}button,input,select{font:inherit}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}a{color:var(--navy);text-decoration:none}button{cursor:pointer}.shell{max-width:1410px;margin:auto;padding:0 22px 48px}.mast{background:var(--panel);border-bottom:1px solid var(--line)}.mast-inner{max-width:1410px;padding:18px 22px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand-square{display:grid;place-items:center;flex:none;background:#001871;color:#7decf8;border-radius:13px;width:44px;height:44px;font-size:22px;font-weight:900}.brand h1{margin:0;font-size:clamp(1.18rem,2.25vw,1.72rem);letter-spacing:-.035em;font-weight:780}.mast-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.signature{font-size:.82rem;font-weight:650;color:var(--muted)}.theme{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;background:var(--panel2);padding:8px 13px;color:var(--ink);font-weight:650;font-size:.82rem}.theme:hover{border-color:var(--cyan)}.summary{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:22px 0 16px}.summary-info{display:flex;gap:8px;flex-wrap:wrap}.pill{font-size:.74rem;font-weight:720;letter-spacing:.02em;padding:6px 10px;border-radius:99px;background:var(--panel);color:var(--muted);border:1px solid var(--line)}.pill.strong{color:var(--green);background:var(--cyan-soft);border-color:transparent}.small-btn{border:1px solid var(--line);color:var(--ink);background:var(--panel);border-radius:10px;padding:8px 13px;font-size:.82rem;font-weight:700}.small-btn:hover{border-color:var(--cyan)}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:17px}.tabs a{font-size:.84rem;font-weight:700;padding:9px 15px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink)}.tabs a:hover{color:var(--cyan);border-color:var(--cyan)}.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:21px 0 12px;flex-wrap:wrap}.section-head h2{font-size:1.2rem;letter-spacing:-.025em;margin:0}.section-head p{font-size:.8rem;color:var(--muted);margin:0}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);min-width:0;scroll-margin-top:15px}.card-head{display:flex;align-items:start;justify-content:space-between;gap:12px;padding:18px 19px 9px}.card-head h3{font-size:1.13rem;letter-spacing:-.025em;margin:0}.card-head p{font-size:.8rem;color:var(--muted);margin:3px 0 0}.card-index{display:inline-grid;place-items:center;flex:none;background:var(--cyan-soft);color:var(--cyan);min-width:35px;height:35px;border-radius:10px;font-weight:850;font-size:.77rem}.card-body{padding:0 19px 19px}.schematic-wrap{background:var(--panel2);border:1px solid var(--line);border-radius:13px;margin-top:10px;padding:5px;overflow:hidden}.schematic{display:block;width:100%;height:auto;max-height:195px}.schematic .wire{stroke:var(--muted);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}.schematic .component{stroke:var(--ink);stroke-width:2;fill:none;stroke-linejoin:round;stroke-linecap:round}.schematic .node{fill:var(--cyan)}.schematic .elementtext{fill:var(--ink);font-size:15px;font-weight:750}.schematic .captiontext{fill:var(--muted);font-size:12.5px;font-weight:600}.schematic .diode{stroke:var(--ink);stroke-width:2;fill:var(--panel2)}.schematic .highlight{stroke:var(--cyan);stroke-width:4.3;stroke-dasharray:7 8;fill:none;stroke-linecap:round;opacity:.1;transition:opacity .1s}.schematic.switch-on .onroute{opacity:.85}.schematic:not(.switch-on) .offroute{opacity:.75}.schematic .s-state{fill:var(--muted);font-size:12px;font-weight:700}.details-note{font-size:.72rem;color:var(--muted);margin:8px 0 12px}.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 15px}.control{min-width:0}.control-line{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0 0 6px;font-size:.81rem}.control label{font-weight:710}.control output{font-variant-numeric:tabular-nums;font-weight:780;color:var(--navy)}input[type=range]{display:block;width:100%;accent-color:var(--cyan);height:22px;cursor:pointer}.scale{display:flex;justify-content:space-between;color:var(--muted);font-size:.68rem;margin-top:-2px}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:13px 0}.metric{border:1px solid var(--line);border-radius:11px;padding:10px 8px;background:var(--panel2);min-width:0}.metric .label{display:block;font-size:.68rem;font-weight:650;color:var(--muted)}.metric .value{display:block;font-size:clamp(.87rem,1.2vw,1.08rem);font-weight:830;margin-top:3px;letter-spacing:-.025em;font-variant-numeric:tabular-nums;white-space:nowrap}.ccm{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 8px;font-size:.74rem}.ccm .ok{font-weight:780;color:var(--green)}.ccm .note{color:var(--muted)}.wave-head{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;margin:12px 0 6px}.wave-head h4{margin:0;font-size:.87rem}.legend{display:flex;gap:11px;flex-wrap:wrap;font-size:.68rem;color:var(--muted)}.legend b{display:inline-block;vertical-align:middle;width:11px;height:3px;margin-right:4px;border-radius:3px}.plot{width:100%;display:block;border:1px solid var(--line);border-radius:12px;background:var(--panel);height:266px}.helper{color:var(--muted);font-size:.74rem;margin:8px 0 0}.footnote{font-size:.8rem;color:var(--muted);margin:17px 0 0;padding:14px 17px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}.inverter-card{margin-top:18px}.inverter-grid{display:grid;grid-template-columns:minmax(300px,.9fr) minmax(0,1.25fr);gap:20px;padding:0 19px 22px}.inv-controls{min-width:0}.inv-plot{min-width:0}.inv-plot .plot{height:225px}.mode-picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:14px 0 14px}.mode-picker button{min-width:0;border:1px solid var(--line);padding:9px 5px;background:var(--panel2);color:var(--ink);font-weight:720;font-size:.77rem;border-radius:10px}.mode-picker button[aria-pressed=true]{background:var(--cyan-soft);color:var(--navy);border-color:var(--cyan)}.inv-inputs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}.control.hidden{display:none}.inv-readouts{margin-top:14px}.spec-list{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.spec-chip{font-size:.69rem;border:1px solid var(--line);padding:4px 7px;border-radius:8px;background:var(--panel2);color:var(--muted);font-variant-numeric:tabular-nums}.inv-comment{font-size:.77rem;color:var(--muted);background:var(--tooltip);border-radius:11px;padding:10px 12px;margin:12px 0}.plot-caption{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}.plot-caption b{font-size:.83rem}.plot-caption span{font-size:.7rem;color:var(--muted)}footer{text-align:center;font-size:.75rem;color:var(--muted);padding:20px 4px 6px}canvas{touch-action:pan-y} @media(max-width:980px){.cards{grid-template-columns:1fr}.inverter-grid{grid-template-columns:1fr}.schematic{max-height:230px}.card-head{padding:17px 16px 7px}.card-body{padding:0 16px 17px}.inverter-grid{padding:0 16px 17px}}@media(max-width:560px){.shell{padding:0 12px 30px}.mast-inner{padding:13px 12px}.mast-actions{width:100%;justify-content:space-between}.summary{margin-top:15px}.brand-square{height:39px;width:39px}.card{border-radius:16px}.control-grid,.inv-inputs{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.metric .value{font-size:1.01rem}.plot{height:275px}.tabs a{padding:8px 10px}.mode-picker button{font-size:.69rem;padding:9px 3px}.schematic .elementtext{font-size:13px}.schematic .captiontext{font-size:11px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Improve graph readability on both small and large displays. */
+.plot{height:290px}
+.inv-plot .plot{height:250px}
+.plot-caption{min-height:30px;gap:10px;margin-bottom:6px}
+.plot-caption b{font-size:.88rem;letter-spacing:-.012em}
+.plot-legend{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:1px 0 8px;color:var(--muted);font-size:.73rem}
+.plot-key{display:inline-block;width:20px;border-top:3px solid var(--cyan);vertical-align:middle;margin-right:5px}
+.plot-key.fundamental{border-color:var(--orange);border-top-style:dashed}
+.fft-description{font-size:.72rem;color:var(--muted);margin:3px 0 6px}
+@media(max-width:560px){.plot{height:305px}.inv-plot .plot{height:250px}.plot-caption{align-items:center}.plot-caption b{font-size:.81rem}.plot-caption .small-btn{font-size:.69rem!important}.plot-legend{font-size:.69rem;gap:8px}}
+</style>
+</head>
+<body>
+<header class="mast"><div class="mast-inner"><div class="brand"><div class="brand-square" aria-hidden="true">∿</div><h1>Power Electronics Conversion for Renewable Energy</h1></div><div class="mast-actions"><span class="signature">Ibrahim Abuishmais, PhD</span><button class="theme" id="themeToggle" type="button" aria-label="Switch between dark and light mode"><span id="themeIcon">☾</span> <span id="themeText">Dark mode</span></button></div></div></header>
+<main class="shell">
+<div class="summary"><div class="summary-info"><span class="pill strong">Interactive teaching laboratory</span><span class="pill">Continuous conduction mode</span><span class="pill">Ideal component models</span><span class="pill">Offline • No dependencies</span></div><button id="pause" class="small-btn" type="button">Ⅱ Pause cursor</button></div>
+<nav class="tabs" aria-label="Converter modules"><a href="#buck">01 Buck</a><a href="#boost">02 Boost</a><a href="#buckboost">03 Buck–boost</a><a href="#inverter">04 DC–AC inverter</a></nav>
+<div class="section-head"><h2>DC–DC converters</h2><p>Change the inputs independently. Observe current continuity, source-current pulses and capacitor ripple.</p></div>
+<div id="dcCards" class="cards"></div>
+<article id="inverter" class="card inverter-card"><div class="card-head"><div><h3>Single-phase DC–AC inverter</h3><p>Ideal full-bridge (H-bridge) inverter · 50 Hz output reference</p></div><span class="card-index">04</span></div><div class="inverter-grid"><div class="inv-controls">
+<div class="schematic-wrap"><svg id="invSchematic" class="schematic" viewBox="0 0 510 240" role="img" aria-label="Single-phase full bridge: four switches, DC source and AC load">
+<path class="wire" d="M70 46 H391 M70 201 H391 M70 46 V86 M70 151 V201 M176 46 V65 M176 96 V122 M176 122 V151 M176 180 V201 M366 46 V65 M366 96 V122 M366 122 V151 M366 180 V201 M176 122 H221 M321 122 H366"/>
+<circle class="component" cx="70" cy="119" r="31"/><text class="elementtext" x="59" y="114">+</text><text class="elementtext" x="61" y="137">−</text><text class="captiontext" x="13" y="113">Vdc</text>
+<g transform="translate(176 80)" aria-label="IGBT symbol"><path class="component" d="M0 -15 V-8 M0 -8 V8 M0 8 V16 M-11 -10 V10 M-26 0 H-11 M0 6 L8 14"/><path class="component" d="M2 12 L8 14 L7 8"/></g>
+<g transform="translate(176 165)" aria-label="IGBT symbol"><path class="component" d="M0 -15 V-8 M0 -8 V8 M0 8 V16 M-11 -10 V10 M-26 0 H-11 M0 6 L8 14"/><path class="component" d="M2 12 L8 14 L7 8"/></g>
+<g transform="translate(366 80) scale(-1 1)" aria-label="IGBT symbol"><path class="component" d="M0 -15 V-8 M0 -8 V8 M0 8 V16 M-11 -10 V10 M-26 0 H-11 M0 6 L8 14"/><path class="component" d="M2 12 L8 14 L7 8"/></g>
+<g transform="translate(366 165) scale(-1 1)" aria-label="IGBT symbol"><path class="component" d="M0 -15 V-8 M0 -8 V8 M0 8 V16 M-11 -10 V10 M-26 0 H-11 M0 6 L8 14"/><path class="component" d="M2 12 L8 14 L7 8"/></g>
+<text class="captiontext" x="120" y="66">T1</text><text class="captiontext" x="120" y="152">T2</text><text class="captiontext" x="397" y="66">T3</text><text class="captiontext" x="397" y="152">T4</text><text class="captiontext" x="261" y="237" text-anchor="middle">IGBT full bridge</text>
+<path class="component" d="M221 122 h11 l8 -11 l9 22 l9 -22 l9 22 l9 -22 l9 22 l9 -22 l8 11 h10"/>
+<text class="elementtext" x="259" y="91">AC load</text><text class="captiontext" x="251" y="151">vₐᵦ(t)</text><text class="captiontext" x="191" y="32">+ DC bus</text><text class="captiontext" x="187" y="223">− DC bus</text><circle class="node" cx="176" cy="122" r="4"/><circle class="node" cx="366" cy="122" r="4"/>
+</svg></div><p class="details-note">H-bridge schematic · T1/T4 and T2/T3 are complementary diagonal IGBT pairs. Gate drivers and antiparallel diodes are omitted for clarity.</p>
+<div class="mode-picker" role="group" aria-label="Modulation mode"><button type="button" data-mode="square" aria-pressed="false">Square wave</button><button type="button" data-mode="quasi" aria-pressed="false">Quasi-square</button><button type="button" data-mode="pwm" aria-pressed="true">Bipolar PWM</button></div>
+<div class="inv-inputs"><div class="control"><div class="control-line"><label for="invVin">DC-link voltage</label><output id="invVinValue">24 V</output></div><input type="range" id="invVin" min="12" max="48" step="1" value="24"><div class="scale"><span>12 V</span><span>48 V</span></div></div>
+<div id="carrierGroup" class="control"><div class="control-line"><label for="carrier">Carrier frequency</label><output id="carrierValue">2000 Hz</output></div><input type="range" id="carrier" min="500" max="5000" step="250" value="2000"><div class="scale"><span>500 Hz</span><span>5 kHz</span></div></div>
+<div id="indexGroup" class="control"><div class="control-line"><label for="modIndex">Modulation index mₐ</label><output id="indexValue">0.80</output></div><input type="range" id="modIndex" min="0.2" max="1" step="0.05" value="0.8"><div class="scale"><span>0.20</span><span>1.00</span></div></div>
+<div id="angleGroup" class="control hidden"><div class="control-line"><label for="angle">Zero interval angle α</label><output id="angleValue">25°</output></div><input type="range" id="angle" min="0" max="80" step="5" value="25"><div class="scale"><span>0°</span><span>80°</span></div></div></div>
+<div class="metrics inv-readouts"><div class="metric"><span class="label">Total RMS</span><span id="rms" class="value">—</span></div><div class="metric"><span class="label">Fundamental RMS</span><span id="fundamental" class="value">—</span></div><div class="metric"><span class="label">Raw-voltage THD</span><span id="thd" class="value">—</span></div><div class="metric"><span class="label">Fundamental</span><span class="value">50 Hz</span></div></div>
+<div class="inv-comment" id="invExplainer">For bipolar PWM, changing carrier frequency mainly moves switching harmonics; changing mₐ changes the fundamental voltage amplitude.</div>
+</div><div class="inv-plot"><div class="plot-caption"><b>Output voltage vₐᵦ(t)</b><button id="scopeToggle" type="button" class="small-btn" style="padding:5px 9px;font-size:.71rem">Zoom PWM (2 ms)</button></div><div class="plot-legend" aria-label="Output voltage graph legend"><span><i class="plot-key"></i>Switched voltage</span><span><i class="plot-key fundamental"></i>50 Hz fundamental</span></div><canvas id="invWave" class="plot" role="img" aria-label="Inverter voltage waveform with overlaid 50 Hz fundamental component"></canvas>
+<div class="plot-caption" style="margin-top:15px"><b>FFT of output voltage</b><button id="fftScopeToggle" type="button" class="small-btn" style="padding:5px 9px;font-size:.71rem">Show low-order harmonics</button></div><div class="fft-description" id="fftDescription">Single-sided RMS spectrum · 0–8 kHz · frequency and harmonic order shown on the horizontal axis</div><canvas id="invFFT" class="plot" role="img" aria-label="Inverter RMS voltage spectrum with frequency in hertz and harmonic order (multiples of 50 Hz)"></canvas>
+<div class="spec-list" id="specPeaks" aria-live="polite"></div></div></div></article>
+<p class="footnote"><strong>Model assumptions:</strong> Ideal, lossless switches, diodes, inductors and capacitors; a resistive DC output load (R = 120 Ω), L = 10 mH, C = 100 μF and fₛ = 20 kHz for all DC–DC modules. Output ripple is calculated from capacitor current and plotted with an expanded vertical scale. The inverting buck–boost output is shown with negative polarity. These steady-state CCM waveforms omit switching transients, parasitic effects, start-up and device ratings. Inverter voltage is shown before any AC filter; its THD includes switching-frequency components. Values are intended for education, not hardware sizing.</p>
+<footer>Ibrahim Abuishmais, PhD · Renewable Energy Systems Interactive Laboratory</footer>
+</main>
+<script>
+'use strict';
+(() => {
+const R=120, L=0.01, C=100e-6, FS=20000, F1=50, SAMPLE_N=16384;
+const defs={
+ buck:{name:'Buck converter',detail:'Step-down · Vₒ = D Vᵢₙ',num:'01',description:'Input current is pulsed; inductor current remains continuous.',diagram:`<path class="wire" d="M38 56 H94 M145 56 H200 M288 56 H424 M38 56 V85 M38 137 V166 H456 M168 56 V97 M168 134 V166 M351 56 V103 M351 143 V166 M424 56 V94 M424 145 V166"/><circle class="component" cx="38" cy="111" r="26"/><text class="elementtext" x="30" y="106">+</text><text class="elementtext" x="31" y="124">−</text><text class="captiontext" x="7" y="154">Vᵢₙ</text><path class="component" d="M94 56 H107 M131 56 H145 M107 56 H131 M107 67 H131 M119 67 V84"/><text class="captiontext" x="95" y="24">MOSFET</text><text class="captiontext" x="123" y="90">G</text><path class="component" d="M200 56 c9 -20 13 -20 22 0 c9 -20 13 -20 22 0 c9 -20 13 -20 22 0 c9 -20 13 -20 22 0"/><text class="elementtext" x="242" y="27">L</text><path class="diode" d="M154 135 H182 L168 108 Z"/><path class="component" d="M153 103 H183"/><text class="elementtext" x="134" y="148">D</text><path class="component" d="M335 104 H367 M335 114 H367"/><path class="wire" d="M351 114 V143"/><text class="elementtext" x="362" y="141">C</text><path class="component" d="M424 94 l-9 6 l18 8 l-18 8 l18 8 l-18 8 l9 6"/><text class="elementtext" x="438" y="122">R</text><circle class="node" cx="168" cy="56" r="4"/><circle class="node" cx="351" cy="56" r="4"/><path class="highlight onroute" d="M59 56 H94 M145 56 H200 M288 56 H351"/><path class="highlight offroute" d="M168 148 V58 H200"/><text class="captiontext" x="377" y="45">+ Vₒ</text><text class="captiontext" x="379" y="186">0 V</text>`},
+ boost:{name:'Boost converter',detail:'Step-up · Vₒ = Vᵢₙ / (1−D)',num:'02',description:'The PV/source current equals the continuous inductor current.',diagram:`<path class="wire" d="M38 56 H93 M183 56 H249 M283 56 H424 M38 56 V85 M38 137 V166 H456 M218 56 V97 M218 138 V166 M352 56 V103 M352 143 V166 M424 56 V94 M424 145 V166"/><circle class="component" cx="38" cy="111" r="26"/><text class="elementtext" x="30" y="106">+</text><text class="elementtext" x="31" y="124">−</text><text class="captiontext" x="7" y="154">Vᵢₙ</text><path class="component" d="M93 56 c9 -20 13 -20 22 0 c9 -20 13 -20 22 0 c9 -20 13 -20 22 0 c9 -20 13 -20 22 0"/><text class="elementtext" x="130" y="27">L</text><path class="diode" d="M249 42 L249 70 L273 56 Z"/><path class="component" d="M279 40 V72"/><text class="elementtext" x="259" y="29">D</text><path class="component" d="M218 98 V108 M218 108 V129 M218 129 V143 M205 108 V129 M186 118 H205"/><text class="captiontext" x="137" y="138">MOSFET</text><text class="captiontext" x="184" y="109">G</text><path class="component" d="M336 104 H368 M336 114 H368"/><path class="wire" d="M352 114 V143"/><text class="elementtext" x="363" y="141">C</text><path class="component" d="M424 94 l-9 6 l18 8 l-18 8 l18 8 l-18 8 l9 6"/><text class="elementtext" x="439" y="122">R</text><circle class="node" cx="218" cy="56" r="4"/><circle class="node" cx="352" cy="56" r="4"/><path class="highlight onroute" d="M65 56 H94 M183 56 H218 V96"/><path class="highlight offroute" d="M218 56 H249 M283 56 H352"/><text class="captiontext" x="377" y="45">+ Vₒ</text><text class="captiontext" x="379" y="186">0 V</text>`},
+ buckboost:{name:'Buck–boost converter',detail:'Inverting · Vₒ = −D Vᵢₙ / (1−D)',num:'03',description:'The inverting output has negative polarity; input current is pulsed.',diagram:`<path class="wire" d="M38 56 H94 M145 56 H247 M280 56 H424 M38 56 V85 M38 137 V166 H456 M185 56 V85 M185 148 V166 M352 56 V103 M352 143 V166 M424 56 V94 M424 145 V166"/><circle class="component" cx="38" cy="111" r="26"/><text class="elementtext" x="30" y="106">+</text><text class="elementtext" x="31" y="124">−</text><text class="captiontext" x="7" y="154">Vᵢₙ</text><path class="component" d="M94 56 H107 M131 56 H145 M107 56 H131 M107 67 H131 M119 67 V84"/><text class="captiontext" x="95" y="24">MOSFET</text><text class="captiontext" x="123" y="90">G</text><path class="component" d="M185 85 c-17 7 -17 13 0 20 c17 7 17 13 0 20 c-17 7 -17 13 0 20"/><text class="elementtext" x="150" y="124">L</text><path class="diode" d="M278 42 L278 70 L255 56 Z"/><path class="component" d="M249 40 V72"/><text class="elementtext" x="259" y="29">D</text><path class="component" d="M336 104 H368 M336 114 H368"/><path class="wire" d="M352 114 V143"/><text class="elementtext" x="363" y="141">C</text><path class="component" d="M424 94 l-9 6 l18 8 l-18 8 l18 8 l-18 8 l9 6"/><text class="elementtext" x="439" y="122">R</text><circle class="node" cx="185" cy="56" r="4"/><circle class="node" cx="352" cy="56" r="4"/><path class="highlight onroute" d="M65 56 H94 M145 56 H185 V85"/><path class="highlight offroute" d="M282 56 H352 M185 56 H247"/><text class="captiontext" x="377" y="45">− Vₒ</text><text class="captiontext" x="377" y="186">0 V</text>`}
+};
+const state={buck:{vin:24,d:.5},boost:{vin:24,d:.5},buckboost:{vin:24,d:.5}},inv={vin:24,carrier:2000,m:.8,alpha:25,mode:'pwm'};
+const $=id=>document.getElementById(id);
+const fmt=(x,unit='',digits=2)=>`${x.toFixed(digits)}${unit?' '+unit:''}`;
+function physicsDC(type,vin,d){
+ if(!defs[type] || !Number.isFinite(vin) || !Number.isFinite(d) || vin<=0 || d<=0 || d>=1)throw Error('Invalid DC inputs');
+ const vo=type==='buck'?vin*d:type==='boost'?vin/(1-d):-vin*d/(1-d);
+ const io=Math.abs(vo)/R;
+ const ilMean=type==='buck'?io:io/(1-d);
+ const deltaI=type==='buck'?vin*d*(1-d)/(L*FS):vin*d/(L*FS);
+ const ilMin=ilMean-deltaI/2,ilMax=ilMean+deltaI/2;
+ const iinMean=type==='boost'?ilMean:d*ilMean;
+ return {type,vin,d,vo,io,ilMean,deltaI,ilMin,ilMax,iinMean,pout:vo*vo/R,ccm:ilMin>0};
+}
+function dcWave(m){
+ const N=600,cycles=3,n=N*cycles,h=1/(N*FS),il=[],iin=[],ripple=[];
+ let cap=0;const currentAt=phase=>phase<m.d?m.ilMin+m.deltaI*(phase/m.d):m.ilMax-m.deltaI*((phase-m.d)/(1-m.d));
+ for(let j=0;j<n;j++){
+   const phase=(j%N)/N,phaseM=((j%N)+.5)/N,on=phase<m.d;
+   const i=currentAt(phase);il.push(i);iin.push((m.type==='boost'||on)?i:0);
+   const mid=currentAt(phaseM),ic=m.type==='buck'?mid-m.io:(phaseM<m.d?-m.io:mid-m.io);
+   ripple.push(cap);cap+=ic*h/C;
+ }
+ // Remove tiny discretization drift (the ideal CCM periodic solution has zero net capacitor charge).
+ const corrected=ripple.map((v,j)=>v-cap*j/n),offset=corrected.reduce((a,b)=>a+b,0)/n;
+ const vout=corrected.map(v=>(m.vo<0?-1:1)*(Math.abs(m.vo)+v-offset));
+ return {il,iin,vout,N,cycles};
+}
+// Iterative radix-2 FFT. Single-sided RMS amplitude is sqrt(2)*|FFT[k]|/N (k>0).
+function fftReal(samples){
+ const n=samples.length,re=Float64Array.from(samples),im=new Float64Array(n);
+ for(let i=1,j=0;i<n;i++){let bit=n>>1;for(;j&bit;bit>>=1)j^=bit;j^=bit;if(i<j){let z=re[i];re[i]=re[j];re[j]=z;}}
+ for(let len=2;len<=n;len<<=1){let ang=-2*Math.PI/len,wlr=Math.cos(ang),wli=Math.sin(ang);
+  for(let i=0;i<n;i+=len){let wr=1,wi=0;for(let j=0;j<len/2;j++){
+   const u=i+j,v=u+len/2,tr=wr*re[v]-wi*im[v],ti=wr*im[v]+wi*re[v];
+   re[v]=re[u]-tr;im[v]=im[u]-ti;re[u]+=tr;im[u]+=ti;
+   const nw=wr*wlr-wi*wli;wi=wr*wli+wi*wlr;wr=nw;
+  }}
+ }
+ const mags=new Float64Array(n/2+1);mags[0]=Math.abs(re[0])/n;
+ for(let k=1;k<n/2;k++)mags[k]=Math.SQRT2*Math.hypot(re[k],im[k])/n;
+ mags[n/2]=Math.abs(re[n/2])/n;
+ return mags;
+}
+function inverterModel(x,N=SAMPLE_N){
+ if(!Number.isInteger(N)||N<64||(N&(N-1)))throw Error('FFT sample count must be power of two');
+ const output=new Float64Array(N),v=x.vin,alpha=x.alpha*Math.PI/180;
+ for(let j=0;j<N;j++){
+   const t=j/(N*F1),theta=2*Math.PI*j/N;
+   if(x.mode==='square')output[j]=j<N/2?v:-v;
+   else if(x.mode==='quasi')output[j]=theta>=alpha&&theta<Math.PI-alpha?v:theta>=Math.PI+alpha&&theta<2*Math.PI-alpha?-v:0;
+   else {const phase=(x.carrier*t)%1,triangle=4*Math.abs(phase-.5)-1;output[j]=x.m*Math.sin(theta)>=triangle?v:-v;}
+ }
+ const spectrum=fftReal(output),sq=output.reduce((a,b)=>a+b*b,0)/N;
+ // Synchronous 50 Hz Fourier projection; coefficients preserve the phase of the fundamental.
+ let a1=0,b1=0;
+ for(let j=0;j<N;j++){const theta=2*Math.PI*j/N;a1+=output[j]*Math.cos(theta);b1+=output[j]*Math.sin(theta);}
+ a1*=2/N;b1*=2/N;
+ const vrms=Math.sqrt(sq),v1=spectrum[1],dc=spectrum[0],thd=100*Math.sqrt(Math.max(0,sq-v1*v1-dc*dc))/Math.max(v1,1e-12);
+ return {output,spectrum,vrms,v1,thd,dc,a1,b1};
+}
+const canvasColors=()=>{const c=getComputedStyle(document.documentElement);return {ink:c.getPropertyValue('--ink').trim(),muted:c.getPropertyValue('--muted').trim(),line:c.getPropertyValue('--line').trim(),grid:c.getPropertyValue('--grid').trim(),cyan:c.getPropertyValue('--cyan').trim(),indigo:c.getPropertyValue('--indigo').trim(),orange:c.getPropertyValue('--orange').trim(),panel:c.getPropertyValue('--panel').trim()};};
+const rendered={};let playing=true,clock=0,last=0,waveScope=false,fftView='full',theme='light';
+function setupCanvas(id){
+ const c=$(id),r=c.getBoundingClientRect(),w=Math.max(300,r.width),h=Math.max(130,r.height),scale=Math.min(window.devicePixelRatio||1,2);
+ c.width=Math.round(w*scale);c.height=Math.round(h*scale);const ctx=c.getContext('2d');if(!ctx)throw Error('Canvas unavailable');ctx.setTransform(scale,0,0,scale,0,0);return {ctx,w,h};
+}
+function line(ctx,x1,y1,x2,y2,color,width=1){ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=width;ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();}
+function textAt(ctx,str,x,y,color,size=11,align='left',weight=500){ctx.fillStyle=color;ctx.font=`${weight} ${size}px system-ui,-apple-system,Segoe UI,sans-serif`;ctx.textAlign=align;ctx.fillText(str,x,y);}
+function plotDC(id,m,wave){
+ const {ctx,w,h}=setupCanvas(`${id}-plot`),c=canvasColors(),left=76,right=w-14;
+ const lanes=[{name:'Input current',unit:'A',values:wave.iin,color:c.cyan},{name:'Inductor current',unit:'A',values:wave.il,color:c.indigo},{name:'Output voltage',unit:'V',values:wave.vout,color:c.orange}];
+ // Each waveform has its own header ABOVE the plotting rectangle. The range labels sit
+ // in a dedicated left gutter, so titles no longer overlap the vertical axes.
+ const gap=9,top=5,footer=23,block=(h-top-footer-2*gap)/3,headerHeight=18;
+ lanes.forEach((lane,idx)=>{
+   const start=top+idx*(block+gap),topY=start+headerHeight,bottomY=start+block;
+   let mn=Math.min(...lane.values),mx=Math.max(...lane.values),pad=Math.max((mx-mn)*.18,lane.name==='Output voltage'?Math.max(.005,Math.abs(m.vo)*.00001):Math.max(.008,m.ilMean*.015));
+   mn-=pad;mx+=pad;
+   textAt(ctx,`${lane.name} (${lane.unit})`,left,start+12,lane.color,11,'left',720);
+   const formatAxis=v=>v.toFixed(Math.abs(v)<1?3:2);
+   textAt(ctx,formatAxis(mx),left-8,topY+9,c.muted,9,'right');
+   textAt(ctx,formatAxis(mn),left-8,bottomY,c.muted,9,'right');
+   for(let k=0;k<3;k++){const y=topY+(bottomY-topY)*k/2;line(ctx,left,y,right,y,c.grid,1);}
+   for(let k=0;k<=6;k++){const x=left+(right-left)*k/6;line(ctx,x,topY,x,bottomY,c.grid,.8);}
+   const n=lane.values.length,dx=(right-left)/(n-1);ctx.beginPath();ctx.lineWidth=1.8;ctx.strokeStyle=lane.color;
+   const step=Math.max(1,Math.floor(n/1600));for(let j=0;j<n;j+=step){const x=left+j*dx,y=bottomY-(lane.values[j]-mn)/(mx-mn)*(bottomY-topY);if(j===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.lineTo(right,bottomY-(lane.values[n-1]-mn)/(mx-mn)*(bottomY-topY));ctx.stroke();
+   if(playing){const xx=left+(right-left)*clock;line(ctx,xx,topY,xx,bottomY,c.muted,1);}
+   if(idx===2){textAt(ctx,'Expanded ripple scale',right-4,start+12,c.muted,9,'right');}
+ });textAt(ctx,'3 switching periods  ·  150 μs',w/2,h-5,c.muted,10,'center');
+}
+function plotInverterWave(model){
+ const {ctx,w,h}=setupCanvas('invWave'),c=canvasColors(),left=57,right=w-14,top=22,bottom=h-28,range=inv.vin*1.16;
+ const zoom=waveScope&&inv.mode==='pwm';
+ const tStart=zoom?.004:0, tSpan=zoom?.002:.02;
+ for(let k=0;k<=4;k++){const val=range*(1-k/2),y=top+(bottom-top)*k/4;line(ctx,left,y,right,y,c.grid);textAt(ctx,`${val.toFixed(0)} V`,left-8,y+4,c.muted,10,'right');}
+ for(let k=0;k<=4;k++){let x=left+(right-left)*k/4;line(ctx,x,top,x,bottom,c.grid);textAt(ctx,`${((tStart+tSpan*k/4)*1000).toFixed(zoom?1:0)} ms`,x,h-7,c.muted,10,'center');}
+ const arr=model.output,jStart=Math.floor(tStart*F1*arr.length),jStop=Math.min(arr.length-1,Math.ceil((tStart+tSpan)*F1*arr.length)),n=Math.max(1,jStop-jStart);
+ const xx=j=>left+(right-left)*(j-jStart)/n,yy=v=>top+(range-v)/(2*range)*(bottom-top);
+ ctx.beginPath();ctx.strokeStyle=c.cyan;ctx.lineWidth=1.45;ctx.setLineDash([]);
+ const step=Math.max(1,Math.floor(n/3400));
+ for(let j=jStart;j<=jStop;j+=step){const x=xx(j),y=yy(arr[j]);if(j===jStart)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.lineTo(xx(jStop),yy(arr[jStop]));ctx.stroke();
+ // Draw analytical reconstruction of the measured 50 Hz Fourier term on top of switching pulses.
+ ctx.beginPath();ctx.strokeStyle=c.orange;ctx.lineWidth=2.6;ctx.setLineDash([7,4]);
+ for(let j=jStart;j<=jStop;j+=Math.max(1,Math.floor(n/900))){const theta=2*Math.PI*j/arr.length,v=model.a1*Math.cos(theta)+model.b1*Math.sin(theta);if(j===jStart)ctx.moveTo(xx(j),yy(v));else ctx.lineTo(xx(j),yy(v));}
+ const thetaLast=2*Math.PI*jStop/arr.length;ctx.lineTo(xx(jStop),yy(model.a1*Math.cos(thetaLast)+model.b1*Math.sin(thetaLast)));ctx.stroke();ctx.setLineDash([]);
+ textAt(ctx,zoom?'Switching detail (4–6 ms)':'One 50 Hz cycle',right-4,12,c.muted,10,'right');
+}
+function plotFFT(model){
+ const {ctx,w,h}=setupCanvas('invFFT'),c=canvasColors(),left=59,right=w-15,top=22,bottom=h-49;
+ const low=fftView==='low',maxHz=low?500:8000,maxBin=maxHz/F1;
+ const maxVal=Math.max(.5,...model.spectrum.slice(1,maxBin+1)),yMax=Math.ceil(maxVal*1.13/2)*2;
+ for(let k=0;k<=4;k++){const y=top+(bottom-top)*k/4;line(ctx,left,y,right,y,c.grid);textAt(ctx,`${(yMax*(1-k/4)).toFixed(1)}`,left-9,y+4,c.muted,10,'right');}
+ // Two rows of labels: physical frequency in hertz and the harmonic order h=f/50 Hz.
+ const ticks=low?[1,3,5,7,9]:(w<420?[0,80,160]:[0,40,80,120,160]);
+ for(const harmonic of ticks){const f=harmonic*F1,x=left+(right-left)*f/maxHz;line(ctx,x,top,x,bottom,c.grid,.8);
+   textAt(ctx,low?`${f} Hz`:f===0?'0 Hz':`${f/1000} kHz`,x,bottom+15,c.muted,10,'center');
+   textAt(ctx,harmonic===0?'DC':`${harmonic} × 50`,x,bottom+28,c.muted,9,'center');
+ }
+ ctx.lineWidth=low?Math.max(2.2,Math.min(6,(right-left)/maxBin*.13)):Math.max(1,Math.min(3,(right-left)/maxBin*.54));
+ for(let k=1;k<=maxBin;k++){const value=model.spectrum[k];if(value<maxVal*.001)continue;const x=left+(right-left)*k/maxBin,y=bottom-(value/yMax)*(bottom-top);line(ctx,x,bottom,x,y,k===1?c.orange:c.indigo,ctx.lineWidth);
+   if(low){ctx.beginPath();ctx.arc(x,y,2.5,0,2*Math.PI);ctx.fillStyle=k===1?c.orange:c.indigo;ctx.fill();}
+ }
+ textAt(ctx,'RMS (V)',left,12,c.muted,10);textAt(ctx,low?'Odd-harmonic examples · h × 50 Hz':'Frequency f · harmonic order h = f / 50 Hz',w/2,h-6,c.muted,10,'center');
+}
+function fillDC(id){const s=state[id],m=physicsDC(id,s.vin,s.d);rendered[id]={m,wave:dcWave(m)};
+ $(`${id}-vinVal`).textContent=`${s.vin} V`;$(`${id}-dVal`).textContent=s.d.toFixed(2);
+ $(`${id}-vo`).textContent=fmt(m.vo,'V',2);$(`${id}-il`).textContent=fmt(m.ilMean,'A',3);$(`${id}-imin`).textContent=fmt(m.ilMin,'A',3);$(`${id}-power`).textContent=fmt(m.pout,'W',1);
+ $(`${id}-ccm`).textContent=m.ccm?'CCM confirmed (iL,min > 0)':'CCM failed';$(`${id}-ccm`).style.color=m.ccm?'var(--green)':'#df3e44';
+ plotDC(id,m,rendered[id].wave);
+}
+function dcTemplate(id,d){return `<article class="card" id="${id}"><div class="card-head"><div><h3>${d.name}</h3><p>${d.detail}</p></div><span class="card-index">${d.num}</span></div><div class="card-body"><div class="schematic-wrap"><svg id="${id}-svg" class="schematic switch-on" viewBox="0 0 510 200" role="img" aria-label="${d.name} circuit topology with inductor, switch, diode, capacitor and load">${d.diagram}</svg></div><p class="details-note">${d.description}</p><div class="control-grid"><div class="control"><div class="control-line"><label for="${id}-vin">Input voltage</label><output id="${id}-vinVal">24 V</output></div><input type="range" id="${id}-vin" min="12" max="36" step="1" value="24"><div class="scale"><span>12 V</span><span>36 V</span></div></div><div class="control"><div class="control-line"><label for="${id}-d">Duty cycle D</label><output id="${id}-dVal">0.50</output></div><input type="range" id="${id}-d" min="0.1" max="0.9" step="0.01" value="0.5"><div class="scale"><span>0.10</span><span>0.90</span></div></div></div><div class="metrics"><div class="metric"><span class="label">Output Vₒ</span><span class="value" id="${id}-vo">—</span></div><div class="metric"><span class="label">Inductor ĪL</span><span class="value" id="${id}-il">—</span></div><div class="metric"><span class="label">Minimum iL</span><span class="value" id="${id}-imin">—</span></div><div class="metric"><span class="label">Output power</span><span class="value" id="${id}-power">—</span></div></div><div class="ccm"><span class="ok" id="${id}-ccm">Checking CCM…</span><span class="note">fₛ = 20 kHz · R = 120 Ω</span></div><div class="wave-head"><h4>Switching waveforms</h4><div class="legend"><span><b style="background:var(--cyan)"></b>iᵢₙ</span><span><b style="background:var(--indigo)"></b>iL</span><span><b style="background:var(--orange)"></b>vₒ</span></div></div><canvas class="plot" id="${id}-plot" role="img" aria-label="Time-domain waveforms showing input current, inductor current, and output voltage for ${d.name}"></canvas><p class="helper">Voltage axis auto-zooms to show capacitor ripple. The displayed inductor-current minimum verifies CCM.</p></div></article>`;}
+function updateInverter(){
+ $('invVinValue').textContent=inv.vin+' V';$('carrierValue').textContent=inv.carrier+' Hz';$('indexValue').textContent=inv.m.toFixed(2);$('angleValue').textContent=inv.alpha+'°';
+ $('scopeToggle').disabled=inv.mode!=='pwm';if(inv.mode!=='pwm'&&waveScope){waveScope=false;$('scopeToggle').textContent='Zoom PWM (2 ms)';}
+ $('carrierGroup').classList.toggle('hidden',inv.mode!=='pwm');$('indexGroup').classList.toggle('hidden',inv.mode!=='pwm');$('angleGroup').classList.toggle('hidden',inv.mode!=='quasi');
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===inv.mode)));
+ rendered.inv=inverterModel(inv);const m=rendered.inv;
+ $('rms').textContent=fmt(m.vrms,'V',2);$('fundamental').textContent=fmt(m.v1,'V',2);$('thd').textContent=fmt(m.thd,'%',1);
+ $('invExplainer').textContent=inv.mode==='square'?'Square wave: odd low-frequency harmonics are present; the fundamental RMS is 4 Vdc / (π√2).':inv.mode==='quasi'?'Quasi-square wave: increasing α widens the zero-voltage interval and reduces the fundamental amplitude; its RMS fundamental is (4 Vdc / (π√2)) cos α.':'Bipolar PWM: increasing carrier frequency moves switching-harmonic groups, while mₐ controls the 50 Hz fundamental. All spectra are for the unfiltered output voltage.';
+ const peaks=[];for(let k=1;k<=160;k++){const a=m.spectrum[k],prev=m.spectrum[k-1],next=m.spectrum[k+1];if(a>=prev&&a>=next&&a>.025)peaks.push({f:k*F1,a});}
+ peaks.sort((a,b)=>b.a-a.a);$('specPeaks').innerHTML=peaks.slice(0,7).map(p=>`<span class="spec-chip">${p.f} Hz · ${p.a.toFixed(2)} V RMS</span>`).join('');
+ $('fftScopeToggle').textContent=fftView==='full'?'Show low-order harmonics':'Show full spectrum (8 kHz)';
+ $('fftDescription').textContent=fftView==='full'?'Single-sided RMS spectrum · 0–8 kHz · frequency and harmonic order shown on the horizontal axis':'Low-order RMS spectrum · 0–500 Hz · first nine odd-harmonic orders marked (1×50, 3×50, …)';
+ plotInverterWave(m);plotFFT(m);
+}
+function renderAll(){for(const id of Object.keys(defs)){if(rendered[id])plotDC(id,rendered[id].m,rendered[id].wave);}if(rendered.inv){plotInverterWave(rendered.inv);plotFFT(rendered.inv);}}
+function applyTheme(newTheme){theme=newTheme;document.documentElement.dataset.theme=theme;$('themeText').textContent=theme==='dark'?'Light mode':'Dark mode';$('themeIcon').textContent=theme==='dark'?'☀':'☾';try{localStorage.setItem('pe-theme',theme)}catch(e){}renderAll();}
+function init(){
+ $('dcCards').innerHTML=Object.entries(defs).map(([id,d])=>dcTemplate(id,d)).join('');
+ for(const id of Object.keys(defs)){
+  ['vin','d'].forEach(field=>$(id+'-'+field).addEventListener('input',e=>{state[id][field]=Number(e.target.value);fillDC(id);}));
+  fillDC(id);
+ }
+ $('invVin').addEventListener('input',e=>{inv.vin=Number(e.target.value);updateInverter();});
+ $('carrier').addEventListener('input',e=>{inv.carrier=Number(e.target.value);updateInverter();});
+ $('modIndex').addEventListener('input',e=>{inv.m=Number(e.target.value);updateInverter();});
+ $('angle').addEventListener('input',e=>{inv.alpha=Number(e.target.value);updateInverter();});
+ document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{inv.mode=b.dataset.mode;fftView=inv.mode==='pwm'?'full':'low';updateInverter();}));
+ $('themeToggle').addEventListener('click',()=>applyTheme(theme==='light'?'dark':'light'));
+ $('pause').addEventListener('click',()=>{playing=!playing;$('pause').textContent=playing?'Ⅱ Pause cursor':'▶ Resume cursor';renderAll();});
+ $('scopeToggle').addEventListener('click',()=>{waveScope=!waveScope;$('scopeToggle').textContent=waveScope?'Full cycle (20 ms)':'Zoom PWM (2 ms)';updateInverter();});
+ $('fftScopeToggle').addEventListener('click',()=>{fftView=fftView==='full'?'low':'full';updateInverter();});
+ updateInverter();
+ let saved='light';try{saved=localStorage.getItem('pe-theme')==='dark'?'dark':'light'}catch(e){}applyTheme(saved);
+ if(typeof ResizeObserver!=='undefined')new ResizeObserver(()=>renderAll()).observe(document.querySelector('.cards'));
+ window.addEventListener('resize',renderAll);
+ const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function tick(t){if(playing&&!reduced&&t-last>65){clock=(clock+.017)%1;for(const id of Object.keys(defs)){
+  const n=state[id],ph=(clock*3)%1;$(id+'-svg').classList.toggle('switch-on',ph<n.d);
+  if(rendered[id])plotDC(id,rendered[id].m,rendered[id].wave);
+ }last=t;}requestAnimationFrame(tick);}
+ if(!reduced&&typeof requestAnimationFrame==='function')requestAnimationFrame(tick);
+ // Public read-only calculation interface used by the automated verification suite.
+ window.PELabTest=Object.freeze({physicsDC,dcWave,inverterModel,fftReal,constants:{R,L,C,FS,F1,SAMPLE_N}});
+}
+try{init();}catch(err){console.error(err);const b=document.createElement('p');b.style.cssText='padding:20px;color:#ba1c39;background:#fff3f4;margin:10px 20px';b.textContent='Simulator initialization error: '+err.message;document.body.prepend(b);}
+})();
+</script>
+</body>
+</html>
